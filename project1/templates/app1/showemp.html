@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title> SHOW EMPLOYEE</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<body style="background-color: #80ced6;">
+    <div >
+    <table class="table table-striped border border-dark " style="background-color:Lavender;">
+      <thead>
+      <center><h1>LAPTOP INFO</h1></center>
+        <tr>
+          <th scope="col">EMPLOYEE ID</th>
+          <th scope="col">EMPLOYEE NAME</th>
+          <th scope="col">GENDER</th>
+          <th scope="col">ADDRESS</th>
+          <th scope="col">DEPARTMENT</th>
+          <th scope="col">MOBILE</th>
+          <th scope="col">SALARY</th>
+          <th scope="col">SKILLS</th>
+          <th>UPDATE</th>
+          <th>DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for i in obj %}
+        <tr>
+          <td><b><i>{{i.eid}}</i></b></td>
+          <td><b><i>{{i.ename}}</i></b></td>
+          <td><b><i>{{i.egender}}</i></b></td>
+          <td><b><i>{{i.eadd}}</i></b></td>
+          <td><b><i>{{i.edept}}</i></b></td>
+          <td><b><i>{{i.emobile}}</i></b></td>
+          <td><b><i>{{i.esal}}</i></b></td>
+          <td><b><i>{{i.eskills}}</i></b></td>
+          
+          <td><button class="btn btn-warning"><a href="{% url 'update_url' i.id %}">UPDATE</a></button></td>
+          <td><button class="btn btn-danger"><a href="{% url 'delete_url' i.id %}">DELETE</a></button></td>
+        </tr>
+        {% endfor %}
+    
+      </tbody>
+    </table>
+    </div>
+    
+    </body>
+    
+    {% endblock %}
